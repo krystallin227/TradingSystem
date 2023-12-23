@@ -101,7 +101,7 @@ def gen_trade_data(securities):
 
 def gen_market_data_final(securities):
     # Constants
-    num_updates = 1000000
+    num_updates = 1000
     size_multiplier = 10000000  # Size at each level (multiplier of 10 million)
     levels = 5  # Number of levels deep for bid and offer
 
@@ -175,13 +175,14 @@ def gen_market_data_final(securities):
     # Create DataFrame
     order_book_df = pd.DataFrame(df_data)
     
-    order_book_df['Price'] = order_book_df.Price.apply(util.decimal_to_fractional)
     order_book_df['Tenor'] = order_book_df.Security.str.removesuffix('Y').apply(int)
-    order_book_df.sort_values(['Update', 'Level', 'Tenor'])
+    order_book_df.sort_values(['Update', 'Tenor','Level'], inplace = True)
+
+    order_book_df['Price'] = order_book_df.Price.apply(util.decimal_to_fractional)
 
     txt_filename = 'marketdata.txt'
     
-    order_book_df.to_csv(txt_filename, header= False, index=False)
+    order_book_df.drop(columns=['Update', 'Tenor']).to_csv(txt_filename, header= False, index=False)
 
     return order_book_df
 
@@ -191,11 +192,11 @@ if __name__ == '__main__':
 
     securities = ["2Y", "3Y", "5Y", "7Y", "10Y", "20Y", "30Y"]
 
-    #data = gen_price(securities)
+    data = gen_price(securities)
 
-    #trade_data_df = gen_trade_data(securities)
+    trade_data_df = gen_trade_data(securities)
 
-    #trade_data_df
+    trade_data_df
 
     # Generate and display the final corrected dataset
     final_order_book_df = gen_market_data_final(securities)
