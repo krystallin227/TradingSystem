@@ -26,6 +26,9 @@ public:
   // ctor for an inquiry
   Inquiry(string _inquiryId, const T &_product, Side _side, long _quantity, double _price, InquiryState _state);
 
+  //default ctor
+  Inquiry();
+
   // Get the inquiry ID
   const string& GetInquiryId() const;
 
