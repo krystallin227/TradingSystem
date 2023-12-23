@@ -4,8 +4,9 @@ import util
 from itertools import cycle
 import random
 import string
+import uuid
 
-# Constants
+
 def gen_price(securities):
     
     num_prices_per_security = 1000000
@@ -187,6 +188,34 @@ def gen_market_data_final(securities):
     return order_book_df
 
 
+# Function to create inquiries with US Treasuries price convention
+def gen_inquiries(securities):
+    inquiries = []
+    for security in securities:
+        for _ in range(10):  # 10 inquiries per security
+            inquiry_id = str(uuid.uuid4())  # Generate a unique long string ID
+            side = random.choice(["BUY", "SELL"])
+            quantity = random.choice(range(100000, 201000, 1000))
+
+            # Generate price in terms of points and fractions
+            points = random.randint(99, 101)
+            fraction = random.randint(0, 255)  # Fractional part as 1/256 of a point
+            price = points + fraction / 256.0  # Convert to decimal system
+
+            inquiries.append({
+                "inquiryId": inquiry_id,
+                "security": security,
+                "side": side,
+                "quantity": quantity,
+                "price": round(price, 8)  # Round to 8 decimal places for clarity
+            })
+    df = pd.DataFrame(inquiries)
+
+    txt_filename = 'inquiries.txt'
+    
+    df.to_csv(txt_filename, header= False, index=False)
+    return df
+
 
 if __name__ == '__main__':
 
@@ -201,5 +230,7 @@ if __name__ == '__main__':
     # Generate and display the final corrected dataset
     final_order_book_df = gen_market_data_final(securities)
     final_order_book_df.head(10)
+
+    gen_inquiries(securities)
     
     print('done')
