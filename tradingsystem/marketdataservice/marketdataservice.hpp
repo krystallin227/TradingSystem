@@ -171,6 +171,8 @@ const vector<Order>& OrderBook<T>::GetOfferStack() const
 }
 
 
+
+
 //predeclaration
 template<typename T>
 class MarketDataConnector;
@@ -181,6 +183,7 @@ class MarketDataConnector;
  * Keyed on product identifier.
  * Type T is the product type.
  */
+
 template<typename T>
 class MarketDataService : public Service<string,OrderBook <T> >
 {
@@ -189,9 +192,7 @@ private:
 
 	vector<ServiceListener<OrderBook<T>>*> listeners;
 	MarketDataConnector<T>* connector;
-
 	int depth;
-
 	//latest orderbook per instrument
 	map<string, OrderBook<T>> order_books;
 
@@ -226,6 +227,7 @@ public:
 	int GetDepth();
 
 };
+
 template<typename T>
 MarketDataService<T>::MarketDataService(int _depth)
 {
@@ -302,6 +304,7 @@ int MarketDataService<T>::GetDepth()
 * Market Data Connector reads data from marketdata.txt
 * Type T is the product type.
 */
+
 template<typename T>
 class MarketDataConnector : public Connector<OrderBook<T>>
 {
@@ -391,6 +394,5 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 
 	_data.close();
 }
-
 
 #endif
