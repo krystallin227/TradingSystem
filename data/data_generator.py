@@ -210,6 +210,7 @@ def gen_inquiries(securities):
                 "price": round(price, 8)  # Round to 8 decimal places for clarity
             })
     df = pd.DataFrame(inquiries)
+    df['price'] = df.price.apply(util.decimal_to_fractional)
 
     txt_filename = 'inquiries.txt'
     
