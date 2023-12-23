@@ -30,6 +30,9 @@ public:
   // ctor for an order
   Order(double _price, long _quantity, PricingSide _side);
 
+  //default ctor
+  Order() = default;
+
   // Get the price on the order
   double GetPrice() const;
 
@@ -81,6 +84,9 @@ public:
   // ctor for bid/offer
   BidOffer(const Order &_bidOrder, const Order &_offerOrder);
 
+  //default ctor
+  BidOffer() = default;
+
   // Get the bid order
   const Order& GetBidOrder() const;
 
@@ -120,6 +126,9 @@ public:
 
   // ctor for the order book
   OrderBook(const T &_product, const vector<Order> &_bidStack, const vector<Order> &_offerStack);
+
+  //default ctor
+  OrderBook() = default;
 
   // Get the product
   const T& GetProduct() const;
@@ -239,7 +248,7 @@ OrderBook<T>& MarketDataService<T>::GetData(string _key)
 template<typename T>
 void MarketDataService<T>::OnMessage(OrderBook<T>& _data)
 {
-	string product_id = _data.GetProduct().GetProductID();
+	string product_id = _data.GetProduct().GetProductId();
 	order_books[product_id] = _data;
 
 	for (auto& l : listeners)
@@ -273,7 +282,7 @@ const BidOffer& MarketDataService<T>::GetBestBidOffer(const string& productId)
 {
 	Order best_bid = order_books[productId].GetBidStack()[0];
 	Order best_offer = order_books[productId].GetOfferStack()[0];
-	return BidOffer(best_bid, best_offer)
+	return BidOffer(best_bid, best_offer);
 
 }
 // Aggregate the order book
@@ -336,7 +345,7 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 		return;
 	}
 	int depth = service->GetDepth();
-	int count == 0;
+	int count = 0;
 	std::string line;
 	vector<Order> bids; vector<Order> asks;
 	Order bid; Order ask;
@@ -361,7 +370,7 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 		quantity = std::stod(splittedItems[3]);
 
 		bid = Order(mid - spread, quantity, BID);
-		ask = Order(mid + spread, quantity, ASK);
+		ask = Order(mid + spread, quantity, OFFER);
 
 		bids.push_back(bid);
 		asks.push_back(ask);
@@ -373,7 +382,7 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 			bids.clear();
 			asks.clear();
 
-			OrderBook<T> order_book(get_product(splittedItems[0], bids_order, asks_order);
+			OrderBook<T> order_book(get_product<T>(splittedItems[0]), bids_order, asks_order);
 			service->OnMessage(order_book);
 			count = 0;
 		}
