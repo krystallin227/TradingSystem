@@ -143,7 +143,7 @@ PositionService<T>::PositionService()
 {
 	positions = map<string, Position<T>>();
 	listeners = vector<ServiceListener<Position<T>>*>();
-	listener_to_trade_booking = new PositionToTradeBookingListener<Bond>(this);
+	listener_to_trade_booking = new PositionToTradeBookingListener<T>(this);
 
 }
 

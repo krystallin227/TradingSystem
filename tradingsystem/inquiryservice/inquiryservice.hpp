@@ -27,6 +27,8 @@ public:
   // ctor for an inquiry
   Inquiry(string _inquiryId, const T &_product, Side _side, long _quantity, double _price, InquiryState _state);
 
+  //default ctor
+  Inquiry() = default;
   // Get the inquiry ID
   const string& GetInquiryId() const;
 
@@ -125,9 +127,6 @@ void Inquiry<T>::SetState(InquiryState _state)
 
 //pre-declarations
 template<typename T>
-class InquiryListener;
-
-template<typename T>
 class InquiryDataConnector;
 
 /**
@@ -142,7 +141,6 @@ private:
 	map<string, Inquiry<T>> inquiries;
 	vector<ServiceListener<Inquiry<T>>*> listeners;
 	InquiryDataConnector<T>* connector;
-	InquiryListener<T>* inquiry_listener;
 
 public:
 
@@ -162,9 +160,6 @@ public:
 	// Get the connector of the service
 	InquiryDataConnector<T>* GetConnector() const;
 
-	//Get the inquiry listener
-	InquiryListener<T>* GetInquiryListener() const;
-
 
 	// Get all listeners on the Service
 	const vector<ServiceListener<Inquiry<T>>*>& GetListeners() const;
@@ -183,7 +178,6 @@ InquiryService<T>::InquiryService()
 	inquiries = map<string, Inquiry<T>>();
 	listeners = vector<ServiceListener<Inquiry<T>>*>();
 	connector = new InquiryDataConnector<T>(this);
-	inquiry_listener = new InquiryListener<T>(this);
 
 }
 
@@ -221,12 +215,6 @@ InquiryDataConnector<T>* InquiryService<T>::GetConnector() const
 	return connector;
 }
 
-template<typename T>
-InquiryListener<T>* InquiryService<T>::GetInquiryListener() const
-{
-	return inquiry_listener;
-}
-
 // Send a quote back to the client
 template<typename T>
 void InquiryService<T>::SendQuote(const string& inquiryId, double price)
@@ -251,13 +239,13 @@ class InquiryDataConnector :public Connector<Inquiry<T>>
 {
 private:
 
-	InquiryService* service;
+	InquiryService<T>* service;
 
 
 public:
 
-	InquiryDataConnector(InquiryService* _service);
-	~InquiryDataConnector();
+	InquiryDataConnector<T>(InquiryService<T>* _service);
+	~InquiryDataConnector<T>();
 
 	// Publish data to the Connector
 	void Publish(Inquiry<T>& _data);
@@ -291,9 +279,6 @@ void InquiryDataConnector<T>::Publish(Inquiry<T>& _data)
 	_data.SetState(DONE);
 
 	service->OnMessage(_data);
-
-
-
 }
 
 template<typename T>
@@ -320,7 +305,8 @@ void InquiryDataConnector<T>::Subscribe(ifstream& _data)
 		//10484181 - 031e-4b38 - b2e3 - 8c76d2cf940d, 2Y, BUY, 146000, 100.83203125
 		T b = get_product<T>(splittedItems[1]);
 		Side _side = splittedItems[2] == "BUY" ? BUY : SELL;
-		Inquiry<T> inquiry(splittedItems[0], b,  _side, std::stod(splittedItems[3]), fractional_to_decimal(splittedItems[4]));
+		auto temp = splittedItems[4];
+		Inquiry<T> inquiry(splittedItems[0], b,  _side, std::stod(splittedItems[3]), fractional_to_decimal(splittedItems[4]), RECEIVED);
 		service->OnMessage(inquiry);
 
 	}
