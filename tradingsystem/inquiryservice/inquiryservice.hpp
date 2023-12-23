@@ -195,6 +195,12 @@ void InquiryService<T>::OnMessage(Inquiry<T>& _data)
 {
 	string inquiry_id = _data.GetInquiryId();
 	inquiries[inquiry_id] = _data;
+
+	//only send quote when the inquiry is in RECEIVED state
+	if (_data.GetState() == RECEIVED)
+	{
+		SendQuote(inquiry_id, 100);
+	}
 }
 
 template<typename T>
@@ -220,7 +226,7 @@ template<typename T>
 void InquiryService<T>::SendQuote(const string& inquiryId, double price)
 {
 	Inquiry<T> inquiry = inquiries[inquiryId];
-	inquiry.SetPrice(100);
+	inquiry.SetPrice(price);
 
 	//publish the quote to connector
 	connector->Publish(inquiry);
@@ -305,7 +311,6 @@ void InquiryDataConnector<T>::Subscribe(ifstream& _data)
 		//10484181 - 031e-4b38 - b2e3 - 8c76d2cf940d, 2Y, BUY, 146000, 100.83203125
 		T b = get_product<T>(splittedItems[1]);
 		Side _side = splittedItems[2] == "BUY" ? BUY : SELL;
-		auto temp = splittedItems[4];
 		Inquiry<T> inquiry(splittedItems[0], b,  _side, std::stod(splittedItems[3]), fractional_to_decimal(splittedItems[4]), RECEIVED);
 		service->OnMessage(inquiry);
 
