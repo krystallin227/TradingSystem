@@ -3,6 +3,7 @@
  * Defines the data types and Service for executions.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef EXECUTION_SERVICE_HPP
 #define EXECUTION_SERVICE_HPP
@@ -65,6 +66,68 @@ private:
 
 };
 
+template<typename T>
+ExecutionOrder<T>::ExecutionOrder(const T& _product, PricingSide _side, string _orderId, OrderType _orderType, double _price, double _visibleQuantity, double _hiddenQuantity, string _parentOrderId, bool _isChildOrder) :
+	product(_product)
+{
+	side = _side;
+	orderId = _orderId;
+	orderType = _orderType;
+	price = _price;
+	visibleQuantity = _visibleQuantity;
+	hiddenQuantity = _hiddenQuantity;
+	parentOrderId = _parentOrderId;
+	isChildOrder = _isChildOrder;
+}
+
+template<typename T>
+const T& ExecutionOrder<T>::GetProduct() const
+{
+	return product;
+}
+
+template<typename T>
+const string& ExecutionOrder<T>::GetOrderId() const
+{
+	return orderId;
+}
+
+template<typename T>
+OrderType ExecutionOrder<T>::GetOrderType() const
+{
+	return orderType;
+}
+
+template<typename T>
+double ExecutionOrder<T>::GetPrice() const
+{
+	return price;
+}
+
+template<typename T>
+long ExecutionOrder<T>::GetVisibleQuantity() const
+{
+	return visibleQuantity;
+}
+
+template<typename T>
+long ExecutionOrder<T>::GetHiddenQuantity() const
+{
+	return hiddenQuantity;
+}
+
+template<typename T>
+const string& ExecutionOrder<T>::GetParentOrderId() const
+{
+	return parentOrderId;
+}
+
+template<typename T>
+bool ExecutionOrder<T>::IsChildOrder() const
+{
+	return isChildOrder;
+}
+
 /**
  * Service for executing orders on an exchange.
  * Keyed on product identifier.
@@ -81,66 +144,6 @@ public:
 
 };
 
-template<typename T>
-ExecutionOrder<T>::ExecutionOrder(const T &_product, PricingSide _side, string _orderId, OrderType _orderType, double _price, double _visibleQuantity, double _hiddenQuantity, string _parentOrderId, bool _isChildOrder) :
-  product(_product)
-{
-  side = _side;
-  orderId = _orderId;
-  orderType = _orderType;
-  price = _price;
-  visibleQuantity = _visibleQuantity;
-  hiddenQuantity = _hiddenQuantity;
-  parentOrderId = _parentOrderId;
-  isChildOrder = _isChildOrder;
-}
 
-template<typename T>
-const T& ExecutionOrder<T>::GetProduct() const
-{
-  return product;
-}
-
-template<typename T>
-const string& ExecutionOrder<T>::GetOrderId() const
-{
-  return orderId;
-}
-
-template<typename T>
-OrderType ExecutionOrder<T>::GetOrderType() const
-{
-  return orderType;
-}
-
-template<typename T>
-double ExecutionOrder<T>::GetPrice() const
-{
-  return price;
-}
-
-template<typename T>
-long ExecutionOrder<T>::GetVisibleQuantity() const
-{
-  return visibleQuantity;
-}
-
-template<typename T>
-long ExecutionOrder<T>::GetHiddenQuantity() const
-{
-  return hiddenQuantity;
-}
-
-template<typename T>
-const string& ExecutionOrder<T>::GetParentOrderId() const
-{
-  return parentOrderId;
-}
-
-template<typename T>
-bool ExecutionOrder<T>::IsChildOrder() const
-{
-  return isChildOrder;
-}
 
 #endif
