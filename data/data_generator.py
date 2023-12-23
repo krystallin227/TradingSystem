@@ -182,7 +182,7 @@ def gen_market_data_final(securities):
 
     txt_filename = 'marketdata.txt'
     
-    order_book_df.drop(columns=['Update', 'Tenor']).to_csv(txt_filename, header= False, index=False)
+    order_book_df.drop(columns=['Update', 'Tenor', 'Level']).to_csv(txt_filename, header= False, index=False)
 
     return order_book_df
 
