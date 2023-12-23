@@ -5,7 +5,6 @@ from itertools import cycle
 import random
 import string
 
-
 # Constants
 def gen_price(securities):
     
@@ -94,7 +93,7 @@ def gen_trade_data(securities):
     trade_data = pd.DataFrame(trades)    
     trade_data['Price'] = trade_data.Price.apply(util.decimal_to_fractional)
 
-    txt_filename = '..\trades.txt'
+    txt_filename = 'trades.txt'
     
     trade_data.to_csv(txt_filename, header= False, index=False)
     
@@ -177,6 +176,8 @@ def gen_market_data_final(securities):
     order_book_df = pd.DataFrame(df_data)
     
     order_book_df['Price'] = order_book_df.Price.apply(util.decimal_to_fractional)
+    order_book_df['Tenor'] = order_book_df.Security.str.removesuffix('Y').apply(int)
+    order_book_df.sort_values(['Update', 'Level', 'Tenor'])
 
     txt_filename = 'marketdata.txt'
     
@@ -190,13 +191,14 @@ if __name__ == '__main__':
 
     securities = ["2Y", "3Y", "5Y", "7Y", "10Y", "20Y", "30Y"]
 
-    data = gen_price(securities)
+    #data = gen_price(securities)
 
-    trade_data_df = gen_trade_data(securities)
+    #trade_data_df = gen_trade_data(securities)
 
-    trade_data_df
-
+    #trade_data_df
 
     # Generate and display the final corrected dataset
     final_order_book_df = gen_market_data_final(securities)
     final_order_book_df.head(10)
+    
+    print('done')
