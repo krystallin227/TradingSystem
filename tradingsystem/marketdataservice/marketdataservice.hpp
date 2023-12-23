@@ -11,6 +11,7 @@
 #include <vector>
 #include "..\soa.hpp"
 #include "..\util.hpp"
+#include "..\bondstaticdata.hpp"
 
 
 using namespace std;
@@ -232,12 +233,15 @@ MarketDataService<T>::~MarketDataService(){}
 template<typename T>
 OrderBook<T>& MarketDataService<T>::GetData(string _key)
 {
-	return trades[_key];
+	return order_books[_key];
 }
 
 template<typename T>
 void MarketDataService<T>::OnMessage(OrderBook<T>& _data)
 {
+	string product_id = _data.GetProduct().GetProductID();
+	order_books[product_id] = _data;
+
 	for (auto& l : listeners)
 	{
 		l->ProcessAdd(_data);
@@ -262,6 +266,22 @@ MarketDataConnector<T>* MarketDataService<T>::GetConnector() const
 	return connector;
 }
 
+
+// Get the best bid/offer order
+template<typename T>
+const BidOffer& MarketDataService<T>::GetBestBidOffer(const string& productId)
+{
+	Order best_bid = order_books[productId].GetBidStack()[0];
+	Order best_offer = order_books[productId].GetOfferStack()[0];
+	return BidOffer(best_bid, best_offer)
+
+}
+// Aggregate the order book
+template<typename T>
+const OrderBook<T>& MarketDataService<T>::AggregateDepth(const string& productId)
+{
+	return order_books[productId];
+}
 
 template<typename T>
 int MarketDataService<T>::GetDepth()
@@ -321,22 +341,40 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 	vector<Order> bids; vector<Order> asks;
 	Order bid; Order ask;
 	double mid;
+	double spread;
+	long quantity;
 
 	while (getline(_data, line)) {
 		count++;
 		std::stringstream ss(line);
 		std::string item;
 		std::vector<std::string> splittedItems;
-		mid = fractional_to_decimal(splittedItems[2]);
 
 		while (getline(ss, item, ','))
 		{
 			splittedItems.push_back(item);
 		}
 
+		//2Y,99-00,0.0078125,10000000,10000000
+		mid = fractional_to_decimal(splittedItems[1]);
+		spread = std::stod(splittedItems[2]);
+		quantity = std::stod(splittedItems[3]);
+
+		bid = Order(mid - spread, quantity, BID);
+		ask = Order(mid + spread, quantity, ASK);
+
+		bids.push_back(bid);
+		asks.push_back(ask);
+
 		if (count % depth == 0)
 		{
-			service->OnMessage(trade);
+			vector<Order> bids_order(bids);
+			vector<Order> asks_order(asks);
+			bids.clear();
+			asks.clear();
+
+			OrderBook<T> order_book(get_product(splittedItems[0], bids_order, asks_order);
+			service->OnMessage(order_book);
 			count = 0;
 		}
 
