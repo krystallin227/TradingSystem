@@ -26,9 +26,6 @@ public:
   // ctor for an inquiry
   Inquiry(string _inquiryId, const T &_product, Side _side, long _quantity, double _price, InquiryState _state);
 
-  //default ctor
-  Inquiry();
-
   // Get the inquiry ID
   const string& GetInquiryId() const;
 
@@ -57,6 +54,57 @@ private:
 
 };
 
+template<typename T>
+Inquiry<T>::Inquiry(string _inquiryId, const T& _product, Side _side, long _quantity, double _price, InquiryState _state) :
+	product(_product)
+{
+	inquiryId = _inquiryId;
+	side = _side;
+	quantity = _quantity;
+	price = _price;
+	state = _state;
+}
+
+template<typename T>
+const string& Inquiry<T>::GetInquiryId() const
+{
+	return inquiryId;
+}
+
+template<typename T>
+const T& Inquiry<T>::GetProduct() const
+{
+	return product;
+}
+
+template<typename T>
+Side Inquiry<T>::GetSide() const
+{
+	return side;
+}
+
+template<typename T>
+long Inquiry<T>::GetQuantity() const
+{
+	return quantity;
+}
+
+template<typename T>
+double Inquiry<T>::GetPrice() const
+{
+	return price;
+}
+
+template<typename T>
+InquiryState Inquiry<T>::GetState() const
+{
+	return state;
+}
+
+
+template<typename T>
+class InquiryListener;
+
 /**
  * Service for customer inquirry objects.
  * Keyed on inquiry identifier (NOTE: this is NOT a product identifier since each inquiry must be unique).
@@ -69,58 +117,12 @@ class InquiryService : public Service<string,Inquiry <T> >
 public:
 
   // Send a quote back to the client
-  void SendQuote(const string &inquiryId, double price) = 0;
+  void SendQuote(const string &inquiryId, double price);
 
   // Reject an inquiry from the client
-  void RejectInquiry(const string &inquiryId) = 0;
+  void RejectInquiry(const string &inquiryId);
 
 };
 
-template<typename T>
-Inquiry<T>::Inquiry(string _inquiryId, const T &_product, Side _side, long _quantity, double _price, InquiryState _state) :
-  product(_product)
-{
-  inquiryId = _inquiryId;
-  side = _side;
-  quantity = _quantity;
-  price = _price;
-  state = _state;
-}
-
-template<typename T>
-const string& Inquiry<T>::GetInquiryId() const
-{
-  return inquiryId;
-}
-
-template<typename T>
-const T& Inquiry<T>::GetProduct() const
-{
-  return product;
-}
-
-template<typename T>
-Side Inquiry<T>::GetSide() const
-{
-  return side;
-}
-
-template<typename T>
-long Inquiry<T>::GetQuantity() const
-{
-  return quantity;
-}
-
-template<typename T>
-double Inquiry<T>::GetPrice() const
-{
-  return price;
-}
-
-template<typename T>
-InquiryState Inquiry<T>::GetState() const
-{
-  return state;
-}
 
 #endif
