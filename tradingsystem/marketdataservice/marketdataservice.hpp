@@ -287,11 +287,40 @@ const BidOffer& MarketDataService<T>::GetBestBidOffer(const string& productId)
 	return BidOffer(best_bid, best_offer);
 
 }
-// Aggregate the order book
+// Aggregate the order book - aggregate quantities for same price levels in the order book
 template<typename T>
 const OrderBook<T>& MarketDataService<T>::AggregateDepth(const string& productId)
 {
-	return order_books[productId];
+	OrderBook<T> order_book = order_books[productId];
+
+	// A map to store the aggregated quantities for each price
+	std::map<double, long> aggregated_bid_map;
+	std::map<double, long> aggregated_ask_map;
+
+	// Aggregate quantities by price
+	for (const auto& bid : order_book.GetBidStack()) 
+	{
+		aggregated_bid_map[bid.GetPrice()] += bid.GetQuantity();
+	}
+
+	for (const auto& bid : order_book.GetOfferStack()) 
+	{
+		aggregated_ask_map[bid.GetPrice()] += bid.GetQuantity();
+	}
+
+	// Creating a new vector for the aggregated results
+	vector<Order> aggregated_bid_stack;
+	vector<Order> aggregated_ask_stack;
+
+	for (const auto& item : aggregated_bid_map) {
+		aggregated_bid_stack.emplace_back(Order(item.first, item.second, BID));
+	}
+
+	for (const auto& item : aggregated_ask_map) {
+		aggregated_bid_stack.emplace_back(Order(item.first, item.second, OFFER));
+	}
+
+	return OrderBook<T>(order_book.GetProduct(), aggregated_bid_stack, aggregated_ask_stack);
 }
 
 template<typename T>
