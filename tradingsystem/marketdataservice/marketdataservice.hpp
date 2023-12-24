@@ -401,8 +401,8 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 		spread = std::stod(splittedItems[2]);
 		quantity = std::stod(splittedItems[3]);
 
-		bid = Order(mid - spread, quantity, BID);
-		ask = Order(mid + spread, quantity, OFFER);
+		bid = Order(mid - spread / 2.0, quantity, BID);
+		ask = Order(mid + spread / 2.0, quantity, OFFER);
 
 		bids.push_back(bid);
 		asks.push_back(ask);
