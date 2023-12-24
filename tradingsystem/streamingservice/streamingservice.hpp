@@ -3,6 +3,7 @@
  * Defines the data types and Service for price streams.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef STREAMING_SERVICE_HPP
 #define STREAMING_SERVICE_HPP
@@ -129,7 +130,7 @@ template<typename T>
 class AlgoStream
 {
 private:
-	PriceStream<T>* priceStream;
+	PriceStream<T>* price_stream;
 
 public:
 
@@ -144,15 +145,16 @@ public:
 template<typename T>
 AlgoStream<T>::AlgoStream(const T& _product, const PriceStreamOrder& _bidOrder, const PriceStreamOrder& _offerOrder)
 {
-	priceStream = new PriceStream<T>(_product, _bidOrder, _offerOrder);
+	price_stream = new PriceStream<T>(_product, _bidOrder, _offerOrder);
 }
 
 template<typename T>
 PriceStream<T>* AlgoStream<T>::GetPriceStream() const
 {
-	return priceStream;
+	return price_stream;
 }
 
+//pre declaration
 template <typename T>
 class AlgoStreamingToPricingListener;
 
@@ -169,7 +171,7 @@ private:
 	map<string, AlgoStream<T>> algo_streams;
 	vector<ServiceListener<AlgoStream<T>>*> listeners;
 	ServiceListener<Price<T>>* stream_to_price_listener;
-	long count;
+	bool even;
 
 public:
 
@@ -189,11 +191,11 @@ public:
 	// Get all listeners on the Service
 	const vector<ServiceListener<AlgoStream<T>>*>& GetListeners() const;
 
-	// Get the listener of the service
+	// Get the stream_to_price_listener
 	ServiceListener<Price<T>>* GetListener();
 
-	// Publish two-way prices
-	void AlgoPublishPrice(Price<T>& _price);
+	// Publish price to listners when the service listern get updates from pricing service
+	void PublishPrice(Price<T>& _price);
 
 };
 
@@ -203,7 +205,7 @@ AlgoStreamingService<T>::AlgoStreamingService()
 	algo_streams = map<string, AlgoStream<T>>();
 	listeners = vector<ServiceListener<AlgoStream<T>>*>();
 	stream_to_price_listener = new AlgoStreamingToPricingListener<T>(this);
-	count = 0;
+	even = false;
 }
 
 template<typename T>
@@ -241,32 +243,34 @@ ServiceListener<Price<T>>* AlgoStreamingService<T>::GetListener()
 }
 
 template<typename T>
-void AlgoStreamingService<T>::AlgoPublishPrice(Price<T>& _price)
+void AlgoStreamingService<T>::PublishPrice(Price<T>& _price)
 {
-	T _product = _price.GetProduct();
-	string _productId = _product.GetProductId();
+	T product = _price.GetProduct();
+	string product_id = product.GetProductId();
 
-	double _mid = _price.GetMid();
-	double _bidOfferSpread = _price.GetBidOfferSpread();
-	double _bidPrice = _mid - _bidOfferSpread / 2.0;
-	double _offerPrice = _mid + _bidOfferSpread / 2.0;
-	long _visibleQuantity = (count % 2 + 1) * 10000000;
-	long _hiddenQuantity = _visibleQuantity * 2;
+	double mid = _price.GetMid();
+	double spread = _price.GetBidOfferSpread();
+	double bid = mid - spread / 2.0;
+	double offer = mid + spread / 2.0;
+	long visible_qty = (even + 1) * 10000000;
+	long hidden_qty = visible_qty * 2;
 
-	count++;
-	PriceStreamOrder _bidOrder(_bidPrice, _visibleQuantity, _hiddenQuantity, BID);
-	PriceStreamOrder _offerOrder(_offerPrice, _visibleQuantity, _hiddenQuantity, OFFER);
-	AlgoStream<T> _algoStream(_product, _bidOrder, _offerOrder);
-	algoStreams[_productId] = _algoStream;
+	//negate the bool
+	even = !even;
+
+	PriceStreamOrder bid_order(bid, visible_qty, hidden_qty, BID);
+	PriceStreamOrder offer_order(offer, visible_qty, hidden_qty, OFFER);
+	AlgoStream<T> algo_stream(product, bid_order, offer_order);
+	algo_streams[product_id] = algo_stream;
 
 	for (auto& l : listeners)
 	{
-		l->ProcessAdd(_algoStream);
+		l->ProcessAdd(algo_stream);
 	}
 }
 
 /**
-* Algo Streaming Service Listener subscribing data from Pricing Service to Algo Streaming Service.
+* AlgoStreamingToPricingListener listen to updates from Pricing Service
 * Type T is the product type.
 */
 template<typename T>
@@ -306,7 +310,7 @@ AlgoStreamingToPricingListener<T>::~AlgoStreamingToPricingListener() {}
 template<typename T>
 void AlgoStreamingToPricingListener<T>::ProcessAdd(Price<T>& _data)
 {
-	service->AlgoPublishPrice(_data);
+	service->PublishPrice(_data);
 }
 
 template<typename T>
@@ -316,6 +320,9 @@ template<typename T>
 void AlgoStreamingToPricingListener<T>::ProcessUpdate(Price<T>& _data) {}
 
 
+//Pre declearations 
+template<typename T>
+class StreamingToAlgoStreamingListener;
 
 /**
  * Streaming service to publish two-way prices.
@@ -326,12 +333,142 @@ template<typename T>
 class StreamingService : public Service<string,PriceStream <T> >
 {
 
+private:
+
+	map<string, PriceStream<T>> price_streams;
+	vector<ServiceListener<PriceStream<T>>*> listeners;
+	ServiceListener<AlgoStream<T>>* stream_to_algo_listener;
+
 public:
 
-  // Publish two-way prices
-  void PublishPrice(const PriceStream<T>& priceStream) = 0;
+	// Constructor and destructor
+	StreamingService();
+	~StreamingService();
+
+
+	// Get data on our service given a key
+	PriceStream<T>& GetData(string _key);
+
+	// The callback that a Connector should invoke for any new or updated data
+	void OnMessage(PriceStream<T>& _data);
+
+	// Add a listener to the Service for callbacks on add, remove, and update events for data to the Service
+	void AddListener(ServiceListener<PriceStream<T>>* _listener);
+
+	// Get all listeners on the Service
+	const vector<ServiceListener<PriceStream<T>>*>& GetListeners() const;
+
+	// Get the stream_to_algo_listener
+	ServiceListener<AlgoStream<T>>* GetListener();
+
+	// Publish two-way prices
+	void PublishPrice(const PriceStream<T>& priceStream);
 
 };
+
+
+template<typename T>
+StreamingService<T>::StreamingService()
+{
+	price_streams = map<string, PriceStream<T>>();
+	listeners = vector<ServiceListener<PriceStream<T>>*>();
+	stream_to_algo_listener = new StreamingToAlgoStreamingListener<T>(this);
+}
+
+template<typename T>
+StreamingService<T>::~StreamingService() {}
+
+template<typename T>
+PriceStream<T>& StreamingService<T>::GetData(string _key)
+{
+	return price_streams[_key];
+}
+
+template<typename T>
+void StreamingService<T>::OnMessage(PriceStream<T>& _data)
+{
+	string product_id = _data.GetProduct().GetProductId();
+	price_streams[product_id] = _data;
+}
+
+template<typename T>
+void StreamingService<T>::AddListener(ServiceListener<PriceStream<T>>* _listener)
+{
+	listeners.push_back(_listener);
+}
+
+template<typename T>
+const vector<ServiceListener<PriceStream<T>>*>& StreamingService<T>::GetListeners() const
+{
+	return listeners;
+}
+
+template<typename T>
+ServiceListener<AlgoStream<T>>* StreamingService<T>::GetListener()
+{
+	return listener;
+}
+
+template<typename T>
+void StreamingService<T>::PublishPrice(const PriceStream<T>& _price_stream)
+{
+	for (auto& l : listeners)
+	{
+		l->ProcessAdd(_price_stream);
+	}
+}
+
+/**
+* StreamingToAlgoStreamingListener listens to updates from Algo Streaming Service.
+* Type T is the product type.
+*/
+template<typename T>
+class StreamingToAlgoStreamingListener : public ServiceListener<AlgoStream<T>>
+{
+
+private:
+
+	StreamingService<T>* service;
+
+public:
+
+	// Connector and Destructor
+	StreamingToAlgoStreamingListener(StreamingService<T>* _service);
+	~StreamingToAlgoStreamingListener();
+
+	// Listener callback to process an add event to the Service
+	void ProcessAdd(AlgoStream<T>& _data);
+
+	// Listener callback to process a remove event to the Service
+	void ProcessRemove(AlgoStream<T>& _data);
+
+	// Listener callback to process an update event to the Service
+	void ProcessUpdate(AlgoStream<T>& _data);
+
+};
+
+template<typename T>
+StreamingToAlgoStreamingListener<T>::StreamingToAlgoStreamingListener(StreamingService<T>* _service)
+{
+	service = _service;
+}
+
+template<typename T>
+StreamingToAlgoStreamingListener<T>::~StreamingToAlgoStreamingListener() {}
+
+template<typename T>
+void StreamingToAlgoStreamingListener<T>::ProcessAdd(AlgoStream<T>& _data)
+{
+	PriceStream<T>* _priceStream = _data.GetPriceStream();
+	service->OnMessage(*_priceStream);
+	service->PublishPrice(*_priceStream);
+}
+
+template<typename T>
+void StreamingToAlgoStreamingListener<T>::ProcessRemove(AlgoStream<T>& _data) {}
+
+template<typename T>
+void StreamingToAlgoStreamingListener<T>::ProcessUpdate(AlgoStream<T>& _data) {}
 
 
 
