@@ -188,13 +188,13 @@ public:
 
 
 template<typename T>
-PricingConnector<T>::PricingConnector<T>(PricingService<T>* _service)
+PricingConnector<T>::PricingConnector(PricingService<T>* _service)
 {
     service = _service;
 }
 
 template<typename T>
-PricingConnector<T>::~PricingConnector<T>() {}
+PricingConnector<T>::~PricingConnector() {}
 
 template<typename T>
 void PricingConnector<T>::Publish(Price<T>& _data) {}
