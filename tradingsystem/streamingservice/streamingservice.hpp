@@ -23,6 +23,9 @@ public:
   // ctor for an order
   PriceStreamOrder(double _price, long _visibleQuantity, long _hiddenQuantity, PricingSide _side);
 
+  //default ctor
+  PriceStreamOrder() = default;
+
   // The side on this order
   PricingSide GetSide() const;
 
@@ -81,6 +84,9 @@ public:
   // ctor
   PriceStream(const T &_product, const PriceStreamOrder &_bidOrder, const PriceStreamOrder &_offerOrder);
 
+  //default ctor
+  PriceStream() = default;
+
   // Get the product
   const T& GetProduct() const;
 
@@ -134,9 +140,10 @@ private:
 
 public:
 
-	// constructors
-	AlgoStream() = default;
 	AlgoStream(const T& _product, const PriceStreamOrder& _bidOrder, const PriceStreamOrder& _offerOrder);
+
+	//default ctor
+	AlgoStream() = default;
 
 	// Get price stream
 	PriceStream<T>* GetPriceStream() const;
@@ -362,7 +369,7 @@ public:
 	ServiceListener<AlgoStream<T>>* GetListener();
 
 	// Publish two-way prices
-	void PublishPrice(const PriceStream<T>& priceStream);
+	void PublishPrice(PriceStream<T>& priceStream);
 
 };
 
@@ -406,11 +413,11 @@ const vector<ServiceListener<PriceStream<T>>*>& StreamingService<T>::GetListener
 template<typename T>
 ServiceListener<AlgoStream<T>>* StreamingService<T>::GetListener()
 {
-	return listener;
+	return stream_to_algo_listener;
 }
 
 template<typename T>
-void StreamingService<T>::PublishPrice(const PriceStream<T>& _price_stream)
+void StreamingService<T>::PublishPrice(PriceStream<T>& _price_stream)
 {
 	for (auto& l : listeners)
 	{
@@ -459,9 +466,9 @@ StreamingToAlgoStreamingListener<T>::~StreamingToAlgoStreamingListener() {}
 template<typename T>
 void StreamingToAlgoStreamingListener<T>::ProcessAdd(AlgoStream<T>& _data)
 {
-	PriceStream<T>* _priceStream = _data.GetPriceStream();
-	service->OnMessage(*_priceStream);
-	service->PublishPrice(*_priceStream);
+	PriceStream<T>* price_stream = _data.GetPriceStream();
+	service->OnMessage(*price_stream);
+	service->PublishPrice(*price_stream);
 }
 
 template<typename T>
