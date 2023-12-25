@@ -7,9 +7,11 @@
 #include "..\products.hpp"
 #include "pricingservice.hpp"
 #include "..\streamingservice\streamingservice.hpp"
+#include "..\guiservice\guiservice.hpp"
 
 int main() 
 {
+
     //create bond pricing service and connect to bond pricing connector
     PricingService<Bond>* bond_pricing_service = new PricingService<Bond>();
     PricingConnector<Bond>* bond_pricing_connector = bond_pricing_service->GetConnector();
@@ -21,6 +23,12 @@ int main()
     //connect streaming service with algo streaming service
     StreamingService<Bond>* streaming_serive = new StreamingService<Bond>();
     algo_streaming_service->AddListener(streaming_serive->GetListener());
+
+
+    //create a guiservice and connect it to pricing service
+    GUIService<Bond>* gui_service = new GUIService<Bond>(300, 1000);
+    bond_pricing_service->AddListener(gui_service->GetListener());
+
 
     //subscribe connector
     std::string filename = "prices.txt";
