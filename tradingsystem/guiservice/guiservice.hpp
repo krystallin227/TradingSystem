@@ -220,7 +220,6 @@ void GUIConnector<T>::Publish(Price<T>& _data)
 
 	//time diff in milliseconds
 	auto temp = static_cast<long long>(now - std::chrono::system_clock::to_time_t(last_update)) * 1000;
-	
 	if (temp >= throttle && current_update < max_update)
 	{
 		service->IncrementCount();
