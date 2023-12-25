@@ -13,7 +13,7 @@
 #include "..\soa.hpp"
 #include "..\bondstaticdata.hpp"
 #include "..\util.hpp"
-
+#include "..\executionservice\executionservice.hpp"
 
 // Trade sides
 enum Side { BUY, SELL };
@@ -114,6 +114,10 @@ Side Trade<T>::GetSide() const
 template<typename T>
 class TradeBookingConnector;
 
+
+template<typename T>
+class TradingToExecutionListerner;
+
 /**
  * Trade Booking Service to book trades to a particular book.
  * Keyed on trade id.
@@ -126,6 +130,7 @@ private:
     map<string, Trade<T>> trades;
     vector<ServiceListener<Trade<T>>*> listeners;
     TradeBookingConnector<T>* connector;
+    TradingToExecutionListerner<T>* listener;
 
 public:
 
@@ -148,17 +153,23 @@ public:
     // Get all listeners on the Service
     const vector<ServiceListener<Trade<T>>*>& GetListeners() const;
 
+    TradingToExecutionListerner<T>* GetListener();
+
     // Book the trade
-    void BookTrade(const Trade<T> &trade);
+    void BookTrade(Trade<T> &trade);
 
 
 };
 
 template<typename T>
-void TradeBookingService<T>::BookTrade(const Trade<T>& trade)
+void TradeBookingService<T>::BookTrade(Trade<T>& trade)
 {
     //book trade
     trades[trade.GetTradeId()] = trade;
+    for (auto& l : listeners)
+    {
+        l->ProcessAdd(trade);
+    }
 }
 
 template<typename T>
@@ -167,6 +178,7 @@ TradeBookingService<T>::TradeBookingService()
     trades = map<string, Trade<T>>();
     listeners = vector<ServiceListener<Trade<T>>*>();
     connector = new TradeBookingConnector<T>(this);
+    listener = new TradingToExecutionListerner<T>(this);
 }
 
 template<typename T>
@@ -182,10 +194,7 @@ template<typename T>
 void TradeBookingService<T>::OnMessage(Trade<T>& _data)
 {
     this->BookTrade(_data);
-    for (auto& l : listeners)
-    {
-        l->ProcessAdd(_data);
-    }
+
 }
 
 template<typename T>
@@ -200,10 +209,17 @@ const vector<ServiceListener<Trade<T>>*>& TradeBookingService<T>::GetListeners()
     return listeners;
 }
 
+
 template<typename T>
 TradeBookingConnector<T>* TradeBookingService<T>::GetConnector() const
 {
     return connector;
+}
+
+template<typename T>
+TradingToExecutionListerner<T>* TradeBookingService<T>::GetListener()
+{
+    return listener;
 }
 
 
@@ -229,8 +245,6 @@ public:
     void Subscribe(ifstream& _data);
 
 };
-
-
 
 
 template<typename T>
@@ -275,8 +289,74 @@ void TradeBookingConnector<T>::Subscribe(ifstream& _data)
 
     _data.close();
 
-
 }
+
+template<typename T>
+class TradingToExecutionListerner : public ServiceListener<ExecutionOrder<T>>
+{
+private:
+
+    TradeBookingService<T>* service;
+    int count; //variable used to cycle through the 3 trading books.
+
+public:
+
+    // Connector and Destructor
+    TradingToExecutionListerner(TradeBookingService<T>* _service);
+    ~TradingToExecutionListerner();
+
+    // Listener callback to process an add event to the Service
+    void ProcessAdd(ExecutionOrder<T>& _data);
+
+    // Listener callback to process a remove event to the Service
+    void ProcessRemove(ExecutionOrder<T>& _data);
+
+    // Listener callback to process an update event to the Service
+    void ProcessUpdate(ExecutionOrder<T>& _data);
+
+};
+
+template<typename T>
+TradingToExecutionListerner<T>::TradingToExecutionListerner(TradeBookingService<T>* _service)
+{
+    service = _service;
+    count = 0;
+}
+
+template<typename T>
+TradingToExecutionListerner<T>::~TradingToExecutionListerner() {}
+
+template<typename T>
+void TradingToExecutionListerner<T>::ProcessAdd(ExecutionOrder<T>& _data)
+{
+    string book;
+    //cycle through the books TRSY1, TRSY2, TRSY3
+    switch (count % 3)
+    {
+    case 0:
+        book = "TRSY1";
+        break;
+    case 1:
+        book = "TRSY2";
+        break;
+    case 2:
+        book = "TRSY3";
+        break;
+    default:
+        break;
+    }
+    Side side = _data.GetPricingSide() == BID ? BUY : SELL;
+    Trade<T> trade(_data.GetProduct(), _data.GetOrderId(),_data.GetPrice(), book, _data.GetVisibleQuantity() + _data.GetVisibleQuantity(), side);
+    service->BookTrade(trade);
+
+    count++;
+}
+
+template<typename T>
+void TradingToExecutionListerner<T>::ProcessRemove(ExecutionOrder<T>& _data) {}
+
+template<typename T>
+void TradingToExecutionListerner<T>::ProcessUpdate(ExecutionOrder<T>& _data) {}
 
 
 #endif

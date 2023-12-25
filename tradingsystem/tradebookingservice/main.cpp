@@ -18,7 +18,7 @@ int main() {
 
     //create position service and add it to booking service's listeners
     PositionService<Bond>* bond_position_service = new PositionService<Bond>();
-    PositionToTradeBookingListener<Bond>* pos_to_trade_booking_listener = bond_position_service->GetListenerToBooking();
+    PositionToTradeBookingListener<Bond>* pos_to_trade_booking_listener = bond_position_service->GetListener();
     bond_booking_service->AddListener(pos_to_trade_booking_listener);
 
 

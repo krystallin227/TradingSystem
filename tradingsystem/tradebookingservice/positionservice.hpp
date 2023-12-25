@@ -126,7 +126,7 @@ public:
 	// Add a listener to the Service for callbacks on add, remove, and update events for data to the Service
 	void AddListener(ServiceListener<Position<T>>* _listener);
 
-	PositionToTradeBookingListener<T>* GetListenerToBooking() const;
+	PositionToTradeBookingListener<T>* GetListener() const;
 
 	// Get all listeners on the Service
 	const vector<ServiceListener<Position<T>>*>& GetListeners() const;
@@ -175,7 +175,7 @@ const vector<ServiceListener<Position<T>>*>& PositionService<T>::GetListeners() 
 }
 
 template<typename T>
-PositionToTradeBookingListener<T>* PositionService<T>::GetListenerToBooking() const
+PositionToTradeBookingListener<T>* PositionService<T>::GetListener() const
 {
 	return listener_to_trade_booking;
 }
