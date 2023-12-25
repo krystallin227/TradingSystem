@@ -145,7 +145,7 @@ void HistoricalDataService<T>::PersistData(string _persistKey, T& _data)
 }
 
 /**
-* Historical Data Connector publishing data from Historical Data Service.
+* Historical Data Connector outputs data from services into txt files.
 * Type T is the data type to persist.
 */
 template<typename T>
@@ -204,7 +204,7 @@ void HistoricalDataConnector<T>::Publish(T& _data)
 		break;
 	}
 
-	// Create an ofstream object
+	// Create an ofstream object - implemented by gpt.
 	ofstream outputFile;
 
 	// Open the file in append mode
@@ -229,7 +229,7 @@ void HistoricalDataConnector<T>::Subscribe(ifstream& _data) {}
 
 /**
 * Historical Data Service Listener subscribing data to Historical Data.
-* Type V is the data type to persist.
+* Type T is the data type to persist.
 */
 template<typename T>
 class HistoricalDataListener : public ServiceListener<T>
@@ -241,7 +241,7 @@ private:
 
 public:
 
-	// Connector and Destructor
+	// Constructor and Destructor
 	HistoricalDataListener(HistoricalDataService<T>* _service);
 	~HistoricalDataListener();
 
