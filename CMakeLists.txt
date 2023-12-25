@@ -22,6 +22,7 @@ add_executable(executable2
 	tradingsystem/tradebookingservice/tradebookingservice.hpp
 	tradingsystem/tradebookingservice/positionservice.hpp
 	tradingsystem/tradebookingservice/riskservice.hpp
+	tradingsystem/util.hpp
 	tradingsystem/historicaldataservice/historicaldataservice.hpp)
 
 

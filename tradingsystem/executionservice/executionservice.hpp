@@ -15,6 +15,7 @@
 
 #include "..\soa.hpp"
 #include "..\marketdataservice\marketdataservice.hpp"
+#include "..\util.hpp"
 
 enum OrderType { FOK, IOC, MARKET, LIMIT, STOP };
 
@@ -166,7 +167,7 @@ string ExecutionOrder<T>::GetPersistData() const
 
 	string _side = side == BID ? "BID" : "OFFER";
 	s += "Side:" + _side  + " , ";
-	s += ("Price:" + std::to_string(price) + " , ");
+	s += ("Price:" + decimal_to_fractional(price) + " , ");
 	s += ("Qty:" + std::to_string(visibleQuantity + hiddenQuantity) + "\n");
 
 	return s;
