@@ -1,0 +1,420 @@
+2023-12-25 07:54:29.543 , d85d3fa9-05fe-4b57-b5d2-5da459c5a337 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.543 , d85d3fa9-05fe-4b57-b5d2-5da459c5a337 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.544 , d85d3fa9-05fe-4b57-b5d2-5da459c5a337 , SELL, Qty :1 , Price : 99-311, State : RECEIVED
+
+2023-12-25 07:54:29.544 , 3751afa1-3360-4841-a325-c74f1d24d8e2 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.545 , 3751afa1-3360-4841-a325-c74f1d24d8e2 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.545 , 3751afa1-3360-4841-a325-c74f1d24d8e2 , SELL, Qty :1 , Price : 99-29+, State : RECEIVED
+
+2023-12-25 07:54:29.546 , 884f2c88-4890-4563-974e-0da95614782a , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.546 , 884f2c88-4890-4563-974e-0da95614782a , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.547 , 884f2c88-4890-4563-974e-0da95614782a , BUY, Qty :0 , Price : 101-245, State : RECEIVED
+
+2023-12-25 07:54:29.547 , ae69df3f-a6af-4137-9a28-6f638a059441 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.548 , ae69df3f-a6af-4137-9a28-6f638a059441 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.548 , ae69df3f-a6af-4137-9a28-6f638a059441 , SELL, Qty :1 , Price : 99-236, State : RECEIVED
+
+2023-12-25 07:54:29.548 , f8bb4083-7e68-4101-af10-58ba496804d1 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.549 , f8bb4083-7e68-4101-af10-58ba496804d1 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.549 , f8bb4083-7e68-4101-af10-58ba496804d1 , SELL, Qty :1 , Price : 101-21+, State : RECEIVED
+
+2023-12-25 07:54:29.550 , 3cd4ac6d-e1da-4173-a160-7fce20fe783b , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.550 , 3cd4ac6d-e1da-4173-a160-7fce20fe783b , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.550 , 3cd4ac6d-e1da-4173-a160-7fce20fe783b , BUY, Qty :0 , Price : 101-26+, State : RECEIVED
+
+2023-12-25 07:54:29.551 , 009e4bbe-e3c9-49a9-8adc-0bac73bb2855 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.551 , 009e4bbe-e3c9-49a9-8adc-0bac73bb2855 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.552 , 009e4bbe-e3c9-49a9-8adc-0bac73bb2855 , SELL, Qty :1 , Price : 99-16, State : RECEIVED
+
+2023-12-25 07:54:29.552 , 94b5f86f-5f94-4547-bf8a-070816cb27ae , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.553 , 94b5f86f-5f94-4547-bf8a-070816cb27ae , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.553 , 94b5f86f-5f94-4547-bf8a-070816cb27ae , BUY, Qty :0 , Price : 99-206, State : RECEIVED
+
+2023-12-25 07:54:29.554 , 8cda948d-94ec-4756-8019-3cc1624d1c1b , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.554 , 8cda948d-94ec-4756-8019-3cc1624d1c1b , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.555 , 8cda948d-94ec-4756-8019-3cc1624d1c1b , SELL, Qty :1 , Price : 99-201, State : RECEIVED
+
+2023-12-25 07:54:29.555 , 7b6b82c8-d838-4450-942c-ff868889d899 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.556 , 7b6b82c8-d838-4450-942c-ff868889d899 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.556 , 7b6b82c8-d838-4450-942c-ff868889d899 , SELL, Qty :1 , Price : 101-04, State : RECEIVED
+
+2023-12-25 07:54:29.556 , 52c5189c-3d3d-4468-bec5-809f7b3b9545 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.557 , 52c5189c-3d3d-4468-bec5-809f7b3b9545 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.557 , 52c5189c-3d3d-4468-bec5-809f7b3b9545 , SELL, Qty :1 , Price : 99-197, State : RECEIVED
+
+2023-12-25 07:54:29.557 , 8f83bb70-d93f-4422-9d9e-4b30513834c1 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.558 , 8f83bb70-d93f-4422-9d9e-4b30513834c1 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.558 , 8f83bb70-d93f-4422-9d9e-4b30513834c1 , SELL, Qty :1 , Price : 101-135, State : RECEIVED
+
+2023-12-25 07:54:29.559 , ca3ec634-0c67-4206-8757-e329c76a1049 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.559 , ca3ec634-0c67-4206-8757-e329c76a1049 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.559 , ca3ec634-0c67-4206-8757-e329c76a1049 , SELL, Qty :1 , Price : 101-071, State : RECEIVED
+
+2023-12-25 07:54:29.560 , 558202b2-ac90-4ab8-92ee-dec83749ffc6 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.560 , 558202b2-ac90-4ab8-92ee-dec83749ffc6 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.560 , 558202b2-ac90-4ab8-92ee-dec83749ffc6 , SELL, Qty :1 , Price : 100-013, State : RECEIVED
+
+2023-12-25 07:54:29.561 , 7b8df46c-6d32-46b9-86ef-9096200ad289 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.561 , 7b8df46c-6d32-46b9-86ef-9096200ad289 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.562 , 7b8df46c-6d32-46b9-86ef-9096200ad289 , BUY, Qty :0 , Price : 101-212, State : RECEIVED
+
+2023-12-25 07:54:29.562 , 5ec80185-c731-4b29-a49f-3af8291264dd , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.563 , 5ec80185-c731-4b29-a49f-3af8291264dd , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.563 , 5ec80185-c731-4b29-a49f-3af8291264dd , BUY, Qty :0 , Price : 101-08+, State : RECEIVED
+
+2023-12-25 07:54:29.564 , d21b7538-97f2-4ef4-91a1-7945299a084c , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.564 , d21b7538-97f2-4ef4-91a1-7945299a084c , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.564 , d21b7538-97f2-4ef4-91a1-7945299a084c , SELL, Qty :1 , Price : 100-25, State : RECEIVED
+
+2023-12-25 07:54:29.565 , 865aebb3-51c8-49ea-bf36-9d12b9293cc6 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.565 , 865aebb3-51c8-49ea-bf36-9d12b9293cc6 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.565 , 865aebb3-51c8-49ea-bf36-9d12b9293cc6 , BUY, Qty :0 , Price : 101-011, State : RECEIVED
+
+2023-12-25 07:54:29.566 , 72086895-da59-450e-ab08-53b9cc813f78 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.566 , 72086895-da59-450e-ab08-53b9cc813f78 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.566 , 72086895-da59-450e-ab08-53b9cc813f78 , SELL, Qty :1 , Price : 99-147, State : RECEIVED
+
+2023-12-25 07:54:29.567 , 616acf19-1893-4397-988c-4e051d18792d , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.567 , 616acf19-1893-4397-988c-4e051d18792d , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.567 , 616acf19-1893-4397-988c-4e051d18792d , SELL, Qty :1 , Price : 100-085, State : RECEIVED
+
+2023-12-25 07:54:29.568 , 8efee2af-dcb0-42c7-a2d4-c7ccc9860e30 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.568 , 8efee2af-dcb0-42c7-a2d4-c7ccc9860e30 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.569 , 8efee2af-dcb0-42c7-a2d4-c7ccc9860e30 , BUY, Qty :0 , Price : 100-052, State : RECEIVED
+
+2023-12-25 07:54:29.569 , d93e8023-d7d0-4f28-9a2a-d1d70276c9d1 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.570 , d93e8023-d7d0-4f28-9a2a-d1d70276c9d1 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.570 , d93e8023-d7d0-4f28-9a2a-d1d70276c9d1 , BUY, Qty :0 , Price : 101-086, State : RECEIVED
+
+2023-12-25 07:54:29.571 , 9ae69dfe-63ca-4b06-a2c4-807c43dbcea3 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.571 , 9ae69dfe-63ca-4b06-a2c4-807c43dbcea3 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.571 , 9ae69dfe-63ca-4b06-a2c4-807c43dbcea3 , SELL, Qty :1 , Price : 100-007, State : RECEIVED
+
+2023-12-25 07:54:29.572 , 4a6de8b3-5a02-4cd9-b437-ad9fa69b4305 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.572 , 4a6de8b3-5a02-4cd9-b437-ad9fa69b4305 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.572 , 4a6de8b3-5a02-4cd9-b437-ad9fa69b4305 , BUY, Qty :0 , Price : 100-306, State : RECEIVED
+
+2023-12-25 07:54:29.573 , 163062fb-b00e-45b2-9e74-eaa1f7117433 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.573 , 163062fb-b00e-45b2-9e74-eaa1f7117433 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.574 , 163062fb-b00e-45b2-9e74-eaa1f7117433 , SELL, Qty :1 , Price : 100-025, State : RECEIVED
+
+2023-12-25 07:54:29.574 , e233ac90-d46c-48b1-bad8-68cf3ad8bcf7 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.575 , e233ac90-d46c-48b1-bad8-68cf3ad8bcf7 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.575 , e233ac90-d46c-48b1-bad8-68cf3ad8bcf7 , BUY, Qty :0 , Price : 100-13, State : RECEIVED
+
+2023-12-25 07:54:29.576 , 03dd08f1-3007-4b83-a3c5-ea8e94371754 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.576 , 03dd08f1-3007-4b83-a3c5-ea8e94371754 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.576 , 03dd08f1-3007-4b83-a3c5-ea8e94371754 , SELL, Qty :1 , Price : 101-236, State : RECEIVED
+
+2023-12-25 07:54:29.577 , 7868a102-ac5e-472c-a82e-4ac02e678e72 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.577 , 7868a102-ac5e-472c-a82e-4ac02e678e72 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.578 , 7868a102-ac5e-472c-a82e-4ac02e678e72 , BUY, Qty :0 , Price : 99-22+, State : RECEIVED
+
+2023-12-25 07:54:29.578 , aa15f31b-d2ca-4084-82dd-046b0d3c1dec , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.579 , aa15f31b-d2ca-4084-82dd-046b0d3c1dec , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.579 , aa15f31b-d2ca-4084-82dd-046b0d3c1dec , SELL, Qty :1 , Price : 100-156, State : RECEIVED
+
+2023-12-25 07:54:29.580 , c6688ddb-a7d7-4eb9-8e33-24c43cb2a482 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.580 , c6688ddb-a7d7-4eb9-8e33-24c43cb2a482 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.581 , c6688ddb-a7d7-4eb9-8e33-24c43cb2a482 , BUY, Qty :0 , Price : 100-131, State : RECEIVED
+
+2023-12-25 07:54:29.582 , 790623ad-f255-4703-9035-215700124dab , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.582 , 790623ad-f255-4703-9035-215700124dab , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.583 , 790623ad-f255-4703-9035-215700124dab , BUY, Qty :0 , Price : 100-29+, State : RECEIVED
+
+2023-12-25 07:54:29.583 , 74752bc8-4637-49c3-9012-fd7076594940 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.584 , 74752bc8-4637-49c3-9012-fd7076594940 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.584 , 74752bc8-4637-49c3-9012-fd7076594940 , SELL, Qty :1 , Price : 99-135, State : RECEIVED
+
+2023-12-25 07:54:29.585 , 502579aa-8c26-4a1d-93ec-3b684f3c527e , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.585 , 502579aa-8c26-4a1d-93ec-3b684f3c527e , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.585 , 502579aa-8c26-4a1d-93ec-3b684f3c527e , SELL, Qty :1 , Price : 99-127, State : RECEIVED
+
+2023-12-25 07:54:29.586 , f77217b3-535a-4452-b397-57db66f2d18c , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.586 , f77217b3-535a-4452-b397-57db66f2d18c , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.587 , f77217b3-535a-4452-b397-57db66f2d18c , SELL, Qty :1 , Price : 101-137, State : RECEIVED
+
+2023-12-25 07:54:29.587 , 5ef14e61-e7ec-4adf-9246-00bcd58d0685 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.587 , 5ef14e61-e7ec-4adf-9246-00bcd58d0685 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.588 , 5ef14e61-e7ec-4adf-9246-00bcd58d0685 , BUY, Qty :0 , Price : 100-093, State : RECEIVED
+
+2023-12-25 07:54:29.588 , d465e06e-f4ac-4b6a-876c-58eef2657edd , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.589 , d465e06e-f4ac-4b6a-876c-58eef2657edd , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.589 , d465e06e-f4ac-4b6a-876c-58eef2657edd , SELL, Qty :1 , Price : 99-06+, State : RECEIVED
+
+2023-12-25 07:54:29.589 , 2deb90b7-b1ad-4f15-9b7c-ca3b03a77a3b , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.590 , 2deb90b7-b1ad-4f15-9b7c-ca3b03a77a3b , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.590 , 2deb90b7-b1ad-4f15-9b7c-ca3b03a77a3b , BUY, Qty :0 , Price : 99-075, State : RECEIVED
+
+2023-12-25 07:54:29.591 , 625878b7-3094-4a61-a424-ec16424ce56d , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.591 , 625878b7-3094-4a61-a424-ec16424ce56d , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.592 , 625878b7-3094-4a61-a424-ec16424ce56d , SELL, Qty :1 , Price : 100-15, State : RECEIVED
+
+2023-12-25 07:54:29.592 , 1b5e1bde-de06-48db-bdf6-e231bd3b387e , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.593 , 1b5e1bde-de06-48db-bdf6-e231bd3b387e , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.593 , 1b5e1bde-de06-48db-bdf6-e231bd3b387e , SELL, Qty :1 , Price : 100-091, State : RECEIVED
+
+2023-12-25 07:54:29.593 , 52b59eac-b155-4dc5-b9a5-de2d8be7744a , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.594 , 52b59eac-b155-4dc5-b9a5-de2d8be7744a , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.594 , 52b59eac-b155-4dc5-b9a5-de2d8be7744a , BUY, Qty :0 , Price : 101-046, State : RECEIVED
+
+2023-12-25 07:54:29.594 , 4f16a467-ecc3-4e41-8dcc-e7898e1e3098 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.595 , 4f16a467-ecc3-4e41-8dcc-e7898e1e3098 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.595 , 4f16a467-ecc3-4e41-8dcc-e7898e1e3098 , BUY, Qty :0 , Price : 99-023, State : RECEIVED
+
+2023-12-25 07:54:29.595 , f0c9c248-2050-468a-ace2-d8adcdf568d1 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.596 , f0c9c248-2050-468a-ace2-d8adcdf568d1 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.596 , f0c9c248-2050-468a-ace2-d8adcdf568d1 , SELL, Qty :1 , Price : 100-056, State : RECEIVED
+
+2023-12-25 07:54:29.596 , f601f4d8-8206-4fc5-8daa-de63f8feca13 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.597 , f601f4d8-8206-4fc5-8daa-de63f8feca13 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.597 , f601f4d8-8206-4fc5-8daa-de63f8feca13 , SELL, Qty :1 , Price : 101-24+, State : RECEIVED
+
+2023-12-25 07:54:29.597 , 6c8175c1-baba-450b-ad39-1d6811276e99 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.597 , 6c8175c1-baba-450b-ad39-1d6811276e99 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.598 , 6c8175c1-baba-450b-ad39-1d6811276e99 , SELL, Qty :1 , Price : 100-217, State : RECEIVED
+
+2023-12-25 07:54:29.598 , f65d0b58-60e6-44ce-9fdb-e433aef07825 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.598 , f65d0b58-60e6-44ce-9fdb-e433aef07825 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.599 , f65d0b58-60e6-44ce-9fdb-e433aef07825 , BUY, Qty :0 , Price : 101-136, State : RECEIVED
+
+2023-12-25 07:54:29.599 , 9dbee82e-de8a-4ea0-9fde-08f68b5fbdc8 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.599 , 9dbee82e-de8a-4ea0-9fde-08f68b5fbdc8 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.600 , 9dbee82e-de8a-4ea0-9fde-08f68b5fbdc8 , SELL, Qty :1 , Price : 100-293, State : RECEIVED
+
+2023-12-25 07:54:29.600 , edd83da5-6d65-4a46-be00-02dca281a538 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.600 , edd83da5-6d65-4a46-be00-02dca281a538 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.601 , edd83da5-6d65-4a46-be00-02dca281a538 , SELL, Qty :1 , Price : 101-145, State : RECEIVED
+
+2023-12-25 07:54:29.601 , 42733065-f6dd-4499-ab27-52ca4a0bc6f5 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.601 , 42733065-f6dd-4499-ab27-52ca4a0bc6f5 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.602 , 42733065-f6dd-4499-ab27-52ca4a0bc6f5 , SELL, Qty :1 , Price : 99-072, State : RECEIVED
+
+2023-12-25 07:54:29.602 , 315f2f90-5911-4f4a-b17a-8b861609a35b , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.602 , 315f2f90-5911-4f4a-b17a-8b861609a35b , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.603 , 315f2f90-5911-4f4a-b17a-8b861609a35b , BUY, Qty :0 , Price : 101-236, State : RECEIVED
+
+2023-12-25 07:54:29.603 , 364c3b60-6787-4b85-b793-8ce608a92543 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.603 , 364c3b60-6787-4b85-b793-8ce608a92543 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.603 , 364c3b60-6787-4b85-b793-8ce608a92543 , BUY, Qty :0 , Price : 100-02+, State : RECEIVED
+
+2023-12-25 07:54:29.604 , 5c2d73f8-576c-4699-a8b7-bf08208bcba3 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.604 , 5c2d73f8-576c-4699-a8b7-bf08208bcba3 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.604 , 5c2d73f8-576c-4699-a8b7-bf08208bcba3 , BUY, Qty :0 , Price : 100-206, State : RECEIVED
+
+2023-12-25 07:54:29.605 , b93f8570-f6a9-411f-8c4f-403f1ee43b53 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.605 , b93f8570-f6a9-411f-8c4f-403f1ee43b53 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.605 , b93f8570-f6a9-411f-8c4f-403f1ee43b53 , BUY, Qty :0 , Price : 100-142, State : RECEIVED
+
+2023-12-25 07:54:29.606 , fe962220-f852-4d49-97f0-709915b8449f , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.606 , fe962220-f852-4d49-97f0-709915b8449f , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.606 , fe962220-f852-4d49-97f0-709915b8449f , BUY, Qty :0 , Price : 101-08, State : RECEIVED
+
+2023-12-25 07:54:29.607 , 451141a5-a25a-47d1-bc67-921015c7ad76 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.607 , 451141a5-a25a-47d1-bc67-921015c7ad76 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.607 , 451141a5-a25a-47d1-bc67-921015c7ad76 , BUY, Qty :0 , Price : 101-24, State : RECEIVED
+
+2023-12-25 07:54:29.608 , 01ec44a4-559f-43c2-9830-4fec0a465072 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.608 , 01ec44a4-559f-43c2-9830-4fec0a465072 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.608 , 01ec44a4-559f-43c2-9830-4fec0a465072 , SELL, Qty :1 , Price : 100-192, State : RECEIVED
+
+2023-12-25 07:54:29.609 , 3c4b6a6b-e9fb-4464-ae64-5af1bc07eda6 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.609 , 3c4b6a6b-e9fb-4464-ae64-5af1bc07eda6 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.610 , 3c4b6a6b-e9fb-4464-ae64-5af1bc07eda6 , SELL, Qty :1 , Price : 99-267, State : RECEIVED
+
+2023-12-25 07:54:29.610 , 147a6f3a-81f0-4c6a-abc9-a75fb72df366 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.611 , 147a6f3a-81f0-4c6a-abc9-a75fb72df366 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.611 , 147a6f3a-81f0-4c6a-abc9-a75fb72df366 , BUY, Qty :0 , Price : 99-171, State : RECEIVED
+
+2023-12-25 07:54:29.611 , f5d65969-0523-432b-a05a-006f93c14b57 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.612 , f5d65969-0523-432b-a05a-006f93c14b57 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.612 , f5d65969-0523-432b-a05a-006f93c14b57 , BUY, Qty :0 , Price : 99-282, State : RECEIVED
+
+2023-12-25 07:54:29.613 , 3cec4dd3-e5c3-4689-9edb-69caa516560c , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.613 , 3cec4dd3-e5c3-4689-9edb-69caa516560c , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.614 , 3cec4dd3-e5c3-4689-9edb-69caa516560c , BUY, Qty :0 , Price : 101-29, State : RECEIVED
+
+2023-12-25 07:54:29.614 , 3f7c4ea0-ff2a-464b-b69a-3d51c0067bdb , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.614 , 3f7c4ea0-ff2a-464b-b69a-3d51c0067bdb , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.615 , 3f7c4ea0-ff2a-464b-b69a-3d51c0067bdb , BUY, Qty :0 , Price : 100-071, State : RECEIVED
+
+2023-12-25 07:54:29.615 , 7c14b524-4fe8-4953-9e58-c398c7fd256e , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.616 , 7c14b524-4fe8-4953-9e58-c398c7fd256e , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.616 , 7c14b524-4fe8-4953-9e58-c398c7fd256e , SELL, Qty :1 , Price : 99-146, State : RECEIVED
+
+2023-12-25 07:54:29.617 , de758f7e-c8a0-4464-8f77-2ae474d5356d , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.617 , de758f7e-c8a0-4464-8f77-2ae474d5356d , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.618 , de758f7e-c8a0-4464-8f77-2ae474d5356d , BUY, Qty :0 , Price : 99-303, State : RECEIVED
+
+2023-12-25 07:54:29.618 , d1250973-b02c-4d2d-b6ae-2d44d5f9caf0 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.619 , d1250973-b02c-4d2d-b6ae-2d44d5f9caf0 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.619 , d1250973-b02c-4d2d-b6ae-2d44d5f9caf0 , BUY, Qty :0 , Price : 101-245, State : RECEIVED
+
+2023-12-25 07:54:29.620 , fc9fbf8d-6455-4b02-a4dd-e307bc4f5216 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.620 , fc9fbf8d-6455-4b02-a4dd-e307bc4f5216 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.620 , fc9fbf8d-6455-4b02-a4dd-e307bc4f5216 , BUY, Qty :0 , Price : 99-156, State : RECEIVED
+
+2023-12-25 07:54:29.621 , 289821d3-c1d4-41e7-975b-40786fc720d7 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.621 , 289821d3-c1d4-41e7-975b-40786fc720d7 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.622 , 289821d3-c1d4-41e7-975b-40786fc720d7 , SELL, Qty :1 , Price : 101-002, State : RECEIVED
+
+2023-12-25 07:54:29.622 , 3208db51-571f-4c90-9762-33ead7a35a6e , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.623 , 3208db51-571f-4c90-9762-33ead7a35a6e , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.623 , 3208db51-571f-4c90-9762-33ead7a35a6e , BUY, Qty :0 , Price : 101-02+, State : RECEIVED
+
+2023-12-25 07:54:29.623 , da54e80c-1490-4e3d-b000-c1bc1a9e0628 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.624 , da54e80c-1490-4e3d-b000-c1bc1a9e0628 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.624 , da54e80c-1490-4e3d-b000-c1bc1a9e0628 , SELL, Qty :1 , Price : 101-312, State : RECEIVED
+
+2023-12-25 07:54:29.625 , 4cdabdae-ef72-4723-a308-055fe67cddc4 , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.625 , 4cdabdae-ef72-4723-a308-055fe67cddc4 , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.625 , 4cdabdae-ef72-4723-a308-055fe67cddc4 , SELL, Qty :1 , Price : 101-02+, State : RECEIVED
+
+2023-12-25 07:54:29.626 , d0f2d07b-27e9-420c-9c24-7043b1bb5e7e , SELL, Qty :1 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.626 , d0f2d07b-27e9-420c-9c24-7043b1bb5e7e , SELL, Qty :1 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.626 , d0f2d07b-27e9-420c-9c24-7043b1bb5e7e , SELL, Qty :1 , Price : 101-23+, State : RECEIVED
+
+2023-12-25 07:54:29.627 , 23b6c10f-a104-4630-828f-6235cb931673 , BUY, Qty :0 , Price : 100-00, State : QUOTED
+
+2023-12-25 07:54:29.627 , 23b6c10f-a104-4630-828f-6235cb931673 , BUY, Qty :0 , Price : 100-00, State : DONE
+
+2023-12-25 07:54:29.627 , 23b6c10f-a104-4630-828f-6235cb931673 , BUY, Qty :0 , Price : 99-206, State : RECEIVED
+
