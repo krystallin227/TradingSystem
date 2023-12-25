@@ -9,7 +9,7 @@ import uuid
 
 def gen_price(securities):
     
-    num_prices_per_security = 1000
+    num_prices_per_security = 1000000
     min_price = 99
     max_price = 101
     price_increment = 1 / 256  # Smallest increment

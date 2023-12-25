@@ -38,6 +38,12 @@ public:
   //update the risk quantity
   void UpdateQuantity(long _quantity);
 
+  //key used to persist data in historical data service
+  string GetPersistKey() const;
+
+  //data persisted in historical data service
+  string GetPersistData() const;
+
 private:
   T product;
   double pv01;
@@ -81,6 +87,21 @@ void PV01<T>::UpdateQuantity(long _quantity)
 	quantity += _quantity;
 }
 
+// key used to persist data in historical data service
+template<typename T>
+string PV01<T>::GetPersistKey() const
+{
+	return product.GetProductId();
+}
+
+//data persisted in historical data service
+template<typename T>
+string PV01<T>::GetPersistData() const
+{
+	auto now = std::chrono::system_clock::now();
+	string s = timeToString(now) + " , "  + this->GetPersistKey() + " ,  PV01: " + std::to_string(pv01) + " , Qty: " + std::to_string(quantity) + "\n";
+	return s;
+}
 
 /**
  * A bucket sector to bucket a group of securities.
@@ -241,6 +262,12 @@ void RiskService<T>::AddPosition(Position<T>& _position)
 	//get total quantity across all books
 	long total_qty = _position.GetAggregatePosition();
 	risks[product_id].UpdateQuantity(total_qty);
+
+	for (auto& l : listeners)
+	{
+		l->ProcessAdd(risks[product_id]);
+	}
+
 }
 
 template<typename T>

@@ -11,6 +11,7 @@
 #include <map>
 #include "..\soa.hpp"
 #include "tradebookingservice.hpp"
+#include "..\util.hpp"
 
 using namespace std;
 
@@ -37,10 +38,16 @@ public:
   long GetPosition(string &book);
 
   // Get the aggregate position
-  long GetAggregatePosition();
+  long GetAggregatePosition() const;
 
   //update the position quantity for a particular book
   void UpdatePosition(string& book, long quantity);
+
+  //key used to persist data in historical data service
+  string GetPersistKey() const;
+
+  //data persisted in historical data service
+  string GetPersistData() const;
 
 private:
   T product;
@@ -78,7 +85,7 @@ long Position<T>::GetPosition(string& book)
 
 //return the aggregate position for this product across all books
 template<typename T>
-long Position<T>::GetAggregatePosition()
+long Position<T>::GetAggregatePosition() const
 {
 	long agg_position = 0;
 
@@ -88,6 +95,32 @@ long Position<T>::GetAggregatePosition()
 	}
 
 	return agg_position;
+}
+
+//key used to persist data in historical data service
+template<typename T>
+string Position<T>::GetPersistKey() const
+{
+	return product.GetProductId();
+}
+
+//data persisted in historical data service
+template<typename T>
+string Position<T>::GetPersistData() const
+{
+	auto now = std::chrono::system_clock::now();
+	string s = timeToString(now) + " , " +  this->GetPersistKey() + " , ";
+	for (const auto& pair : positions)
+	{
+		s += pair.first;
+		s += ":";
+		s += std::to_string(pair.second);
+		s += " , ";
+	}
+	s += "Aggregated: ";
+	s += std::to_string(this->GetAggregatePosition());
+	s += "\n";
+	return s;
 }
 
 

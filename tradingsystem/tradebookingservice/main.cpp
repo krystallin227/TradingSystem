@@ -8,6 +8,7 @@
 #include "tradebookingservice.hpp"
 #include "positionservice.hpp"
 #include "riskservice.hpp"
+#include "..\historicaldataservice\historicaldataservice.hpp"
 
 int main() {
 
@@ -27,6 +28,13 @@ int main() {
     RiskToPositionListener<Bond>* risk_to_pos_listener = bond_risk_service->GetListener();
     bond_position_service->AddListener(risk_to_pos_listener);
 
+    //create historical data service for pos_service
+    HistoricalDataService< Position<Bond>>  historical_position_service(PositionType);
+    bond_position_service->AddListener(historical_position_service.GetListener());
+
+    //create historical data service for risk_service
+    HistoricalDataService<PV01<Bond>>  historical_risk_service(RiskType);
+    bond_risk_service->AddListener(historical_risk_service.GetListener());
 
 
     //start reading trade data
