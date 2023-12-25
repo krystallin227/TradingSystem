@@ -8,6 +8,7 @@
 #include "pricingservice.hpp"
 #include "..\streamingservice\streamingservice.hpp"
 #include "..\guiservice\guiservice.hpp"
+#include "..\historicaldataservice\historicaldataservice.hpp"
 
 int main() 
 {
@@ -23,6 +24,11 @@ int main()
     //connect streaming service with algo streaming service
     StreamingService<Bond>* streaming_serive = new StreamingService<Bond>();
     algo_streaming_service->AddListener(streaming_serive->GetListener());
+
+
+    //create historical data service for streaming_service
+    HistoricalDataService< PriceStream<Bond>>  historical_streaming_service(StreamingType);
+    streaming_serive->AddListener(historical_streaming_service.GetListener());
 
 
     //create a guiservice and connect it to pricing service

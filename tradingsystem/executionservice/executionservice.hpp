@@ -62,6 +62,12 @@ public:
   // Is child order?
   bool IsChildOrder() const;
 
+  //key used to persist data in historical data service
+  string GetPersistKey() const;
+
+  //data persisted in historical data service
+  string GetPersistData() const;
+
 private:
   T product;
   PricingSide side;
@@ -141,6 +147,28 @@ template<typename T>
 bool ExecutionOrder<T>::IsChildOrder() const
 {
 	return isChildOrder;
+}
+
+//key used to persist data in historical data service
+template<typename T>
+string ExecutionOrder<T>::GetPersistKey() const
+{
+	return orderId;
+}
+
+//data persisted in historical data service
+template<typename T>
+string ExecutionOrder<T>::GetPersistData() const
+{
+	auto now = std::chrono::system_clock::now();
+	string s = timeToString(now) + " , " + this->GetPersistKey() + " , ";
+
+	string _side = side == BID ? "BID" : "OFFER";
+	s += "Side:" + _side  + " , ";
+	s += ("Price:" + std::to_string(price) + " , ");
+	s += ("Qty:" + std::to_string(visibleQuantity + hiddenQuantity) + "\n");
+
+	return s;
 }
 
 

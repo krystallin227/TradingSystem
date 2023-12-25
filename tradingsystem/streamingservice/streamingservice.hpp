@@ -60,6 +60,11 @@ double PriceStreamOrder::GetPrice() const
 	return price;
 }
 
+PricingSide PriceStreamOrder::GetSide() const
+{
+	return side;
+}
+
 long PriceStreamOrder::GetVisibleQuantity() const
 {
 	return visibleQuantity;
@@ -96,6 +101,13 @@ public:
   // Get the offer order
   const PriceStreamOrder& GetOfferOrder() const;
 
+  //key used to persist data in historical data service
+  string GetPersistKey() const;
+
+  //data persisted in historical data service
+  string GetPersistData() const;
+
+
 private:
   T product;
   PriceStreamOrder bidOrder;
@@ -126,6 +138,28 @@ const PriceStreamOrder& PriceStream<T>::GetOfferOrder() const
 {
 	return offerOrder;
 }
+
+//key used to persist data in historical data service
+template<typename T>
+string PriceStream<T>::GetPersistKey() const
+{
+	return product.GetProductId();
+}
+
+//data persisted in historical data service
+template<typename T>
+string PriceStream<T>::GetPersistData() const
+{
+	auto now = std::chrono::system_clock::now();
+	string s = timeToString(now) + " , " + this->GetPersistKey() + " , ";
+
+	s += ("BidOrder , Price: " + std::to_string(bidOrder.GetPrice()));
+	s += (" , Qty:" + std::to_string(bidOrder.GetHiddenQuantity() + bidOrder.GetVisibleQuantity()) + " , ");
+	s += ("OfferOrder , Price: " + std::to_string(offerOrder.GetPrice()));
+	s += (" , Qty:" + std::to_string(offerOrder.GetHiddenQuantity() + offerOrder.GetVisibleQuantity()) + " \n ");
+	return s;
+}
+
 
 
 /**
