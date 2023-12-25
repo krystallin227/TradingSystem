@@ -1,5 +1,5 @@
 ### Introduction
-The final project involves developing a bond trading system for US Treasuries, focusing on seven specific securities. Key components include various services like BondTradeBookingService, BondPositionService, and BondMarketDataService, among others. The project requires the creation of data files and the use of connectors for data flow. 
+The final project involves developing a bond trading system for US Treasuries, focusing on seven on the run securities. Key components include various services like BondTradeBookingService, BondPositionService, and BondMarketDataService, among others. The project requires the creation of data files, the use of connectors for data flow, and the use of listeners to transmit information between services. 
 
 
 ### Use of ChatGPT
