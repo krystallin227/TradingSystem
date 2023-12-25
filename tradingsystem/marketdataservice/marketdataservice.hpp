@@ -3,6 +3,7 @@
  * Defines the data types and Service for order book market data.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef MARKET_DATA_SERVICE_HPP
 #define MARKET_DATA_SERVICE_HPP
@@ -385,6 +386,7 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 	double spread;
 	long quantity;
 
+	//parsing function implemente by GPT.
 	while (getline(_data, line)) {
 		count++;
 		std::stringstream ss(line);
@@ -396,7 +398,7 @@ void MarketDataConnector<T>::Subscribe(ifstream& _data)
 			splittedItems.push_back(item);
 		}
 
-		//2Y,99-00,0.0078125,10000000,10000000
+		//convert price from fractional representation to decimals
 		mid = fractional_to_decimal(splittedItems[1]);
 		spread = std::stod(splittedItems[2]);
 		quantity = std::stod(splittedItems[3]);

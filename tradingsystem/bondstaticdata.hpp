@@ -1,3 +1,10 @@
+/**
+ * bondstaticdata.hpp
+ * Contains static data for the 7 current on-the-run US treasuries.
+ *
+ * @author Krystal Lin
+ */
+
 #ifndef BONDSTATICDATA_HPP
 #define BONDSTATICDATA_HPP
 
@@ -31,8 +38,6 @@ Bond get_product(string ticker)
 	else if (ticker == "30Y") return Bond("912810TV0", CUSIP, "30Y", 4.75, from_string("2053/11/15"));
 }
 
-template <typename T>
-double get_pv01(string _cusip);  // Declaration only
 
 // Get PV01 value for US Treasury. From bbg ASOF 12/22/2023
 double get_pv01(string _cusip)

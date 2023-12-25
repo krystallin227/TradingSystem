@@ -1,3 +1,10 @@
+/**
+ * util.hpp
+ * Contains utility function for the projects such as decimal fractional conversion, timestamp to string conversion.
+ *
+ * @author Krystal Lin
+ */
+
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
