@@ -3,6 +3,7 @@
  * Defines the data types and Service for positions.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef POSITION_SERVICE_HPP
 #define POSITION_SERVICE_HPP

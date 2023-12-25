@@ -3,6 +3,7 @@
  * Defines the data types and Service for customer inquiries.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef INQUIRY_SERVICE_HPP
 #define INQUIRY_SERVICE_HPP
@@ -30,6 +31,7 @@ public:
 
   //default ctor
   Inquiry() = default;
+
   // Get the inquiry ID
   const string& GetInquiryId() const;
 
@@ -346,8 +348,6 @@ void InquiryDataConnector<T>::Subscribe(ifstream& _data)
 			splittedItems.push_back(item);
 		}
 
-		//string _inquiryId, const T& _product, Side _side, long _quantity, double _price, InquiryState _state
-		//10484181 - 031e-4b38 - b2e3 - 8c76d2cf940d, 2Y, BUY, 146000, 100.83203125
 		T b = get_product<T>(splittedItems[1]);
 		Side _side = splittedItems[2] == "BUY" ? BUY : SELL;
 		Inquiry<T> inquiry(splittedItems[0], b,  _side, std::stod(splittedItems[3]), fractional_to_decimal(splittedItems[4]), RECEIVED);

@@ -3,6 +3,7 @@
  * Defines the data types and Service for fixed income risk.
  *
  * @author Breman Thuraisingham
+ * @author Krystal Lin
  */
 #ifndef RISK_SERVICE_HPP
 #define RISK_SERVICE_HPP

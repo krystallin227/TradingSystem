@@ -18,7 +18,7 @@ int main() {
     HistoricalDataService< Inquiry<Bond>>  historical_inquiry_service(InquiryType);
     inquiry_service->AddListener(historical_inquiry_service.GetListener());
 
-    //start reading trade data
+    //start reading inquries data
     std::string filename = "inquiries.txt";
     std::ifstream file(filename);
     inquiry_data_connector->Subscribe(file);

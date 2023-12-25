@@ -35,6 +35,7 @@ public:
 
   //default ctor
   ExecutionOrder() = default;
+
   // Get the product
   const T& GetProduct() const;
 
