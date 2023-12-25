@@ -1,3 +1,10 @@
+/**
+ * guiservice.hpp
+ * Simulates a GUI that only gets update periodically, with 300 millisecond throttle.
+ *
+ * @author Krystal Lin
+ */
+
 #ifndef GUI_SERVICE_HPP
 #define GUI_SERVICE_HPP
 
@@ -65,7 +72,7 @@ public:
 	// Get the throttle of the service
 	int GetThrottle() const;
 
-	// Get the millisec of the service
+	// Get the last update time of GUI service to user
 	std::chrono::time_point<std::chrono::system_clock> GetLastUpdate() const;
 
 	// Get the max number of updates needed in GUI
@@ -89,7 +96,7 @@ GUIService<T>::GUIService(int _throttle, int _max_updates)
 	connector = new GUIConnector<T>(this);
 	listener = new GUIToPricingListener<T>(this);
 	throttle = _throttle;
-	last_update = std::chrono::system_clock::now();//- std::chrono::milliseconds(throttle);// std::numeric_limits<std::time_t>::min();
+	last_update = std::chrono::system_clock::now();
 	max_updates = _max_updates;
 	count = 0;
 }
@@ -225,7 +232,7 @@ void GUIConnector<T>::Publish(Price<T>& _data)
 		service->IncrementCount();
 		service->SetLastUpdate(now_t);
 
-		// Create an ofstream object
+		// Create an ofstream object  - implemented by GPT.
 		ofstream outputFile;
 
 		// Open the file in append mode
@@ -266,7 +273,7 @@ private:
 
 public:
 
-	// Connector and Destructor
+	// Constructor and Destructor
 	GUIToPricingListener(GUIService<T>* _service);
 	~GUIToPricingListener();
 
