@@ -134,8 +134,6 @@ public:
 	// Add a trade to the service
 	void AddTrade(const Trade<T> &trade);
 
-
-
 };
 
 template<typename T>
