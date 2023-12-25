@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.26)
 set(CMAKE_CXX_STANDARD 20)
 project(TradingSystem)
 
+include_directories(/opt/homebrew/Cellar/boost/1.81.0/include/)
+
 add_executable(executable1
         tradingsystem/inquiryservice/main.cpp
         tradingsystem/tradebookingservice/tradebookingservice.hpp
