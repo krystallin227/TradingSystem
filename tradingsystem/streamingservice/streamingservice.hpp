@@ -11,6 +11,7 @@
 #include "..\soa.hpp"
 #include "..\marketdataservice\marketdataservice.hpp"
 #include "..\pricingservice\pricingservice.hpp"
+#include "..\util.hpp"
 
 /**
  * A price stream order with price and quantity (visible and hidden)
@@ -153,9 +154,9 @@ string PriceStream<T>::GetPersistData() const
 	auto now = std::chrono::system_clock::now();
 	string s = timeToString(now) + " , " + this->GetPersistKey() + " , ";
 
-	s += ("BidOrder , Price: " + std::to_string(bidOrder.GetPrice()));
+	s += ("BidOrder , Price: " + decimal_to_fractional(bidOrder.GetPrice()));
 	s += (" , Qty:" + std::to_string(bidOrder.GetHiddenQuantity() + bidOrder.GetVisibleQuantity()) + " , ");
-	s += ("OfferOrder , Price: " + std::to_string(offerOrder.GetPrice()));
+	s += ("OfferOrder , Price: " + decimal_to_fractional(offerOrder.GetPrice()));
 	s += (" , Qty:" + std::to_string(offerOrder.GetHiddenQuantity() + offerOrder.GetVisibleQuantity()) + " \n ");
 	return s;
 }

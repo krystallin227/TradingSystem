@@ -10,6 +10,7 @@
 #include "..\soa.hpp"
 #include "..\tradebookingservice\tradebookingservice.hpp"
 #include "..\bondstaticdata.hpp"
+#include "..\util.hpp"
 
 // Various inqyury states
 enum InquiryState { RECEIVED, QUOTED, DONE, REJECTED, CUSTOMER_REJECTED };
@@ -53,6 +54,11 @@ public:
   //set the state of inquiry
   void SetState(InquiryState _state);
 
+  //key used to persist data in historical data service
+  string GetPersistKey() const;
+
+  //data persisted in historical data service
+  string GetPersistData() const;
 
 private:
   string inquiryId;
@@ -123,6 +129,34 @@ template<typename T>
 void Inquiry<T>::SetState(InquiryState _state)
 {
 	state = _state;
+}
+
+
+//key used to persist data in historical data service
+template<typename T>
+string Inquiry<T>::GetPersistKey() const
+{
+	return inquiryId;
+}
+
+//data persisted in historical data service
+template<typename T>
+string Inquiry<T>::GetPersistData() const
+{
+	auto now = std::chrono::system_clock::now();
+	string s = timeToString(now) + " , " + this->GetPersistKey() + " , ";
+	
+	s += (side == BUY ? "BUY" : "SELL");
+	s += (", Qty :" + std::to_string(side));
+	s += " , Price : " + decimal_to_fractional(price);
+	s += ", State : ";
+	if (state == RECEIVED) s += "RECEIVED";
+	else if(state == QUOTED) s += "QUOTED";
+	else if(state == DONE) s += "DONE";
+	else if(state == REJECTED) s += "REJECTED";
+	else if(state == CUSTOMER_REJECTED) s += "CUSTOMER_REJECTED";
+	s += "\n";
+	return s;
 }
 
 //pre-declarations
@@ -200,6 +234,11 @@ void InquiryService<T>::OnMessage(Inquiry<T>& _data)
 	if (_data.GetState() == RECEIVED)
 	{
 		SendQuote(inquiry_id, 100);
+	}
+
+	for (auto& l : listeners)
+	{
+		l->ProcessAdd(_data);
 	}
 }
 

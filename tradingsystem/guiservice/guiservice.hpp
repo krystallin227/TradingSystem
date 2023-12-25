@@ -229,7 +229,7 @@ void GUIConnector<T>::Publish(Price<T>& _data)
 		ofstream outputFile;
 
 		// Open the file in append mode
-		outputFile.open("gui.txt", ios::app);
+		outputFile.open("outputs/gui.txt", ios::app);
 
 		// Check if the file is open
 		if (outputFile.is_open()) 

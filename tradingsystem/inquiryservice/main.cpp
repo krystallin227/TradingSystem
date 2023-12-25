@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "inquiryservice.hpp"
+#include "..\historicaldataservice\historicaldataservice.hpp"
 
 int main() {
 
@@ -12,6 +13,10 @@ int main() {
 
     InquiryDataConnector<Bond>* inquiry_data_connector = inquiry_service->GetConnector();
 
+
+    //create historical data service for inquiry_service
+    HistoricalDataService< Inquiry<Bond>>  historical_inquiry_service(InquiryType);
+    inquiry_service->AddListener(historical_inquiry_service.GetListener());
 
     //start reading trade data
     std::string filename = "inquiries.txt";

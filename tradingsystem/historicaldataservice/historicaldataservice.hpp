@@ -188,19 +188,19 @@ void HistoricalDataConnector<T>::Publish(T& _data)
 	switch (service_type)
 	{
 	case PositionType:
-		filename = "positions.txt";
+		filename = "outputs/positions.txt";
 		break;
 	case RiskType:
-		filename = "risk.txt";
+		filename = "outputs/risk.txt";
 		break;
 	case ExecutionType:
-		filename = "executions.txt";
+		filename = "outputs/executions.txt";
 		break;
 	case StreamingType:
-		filename = "streaming.txt";
+		filename = "outputs/streaming.txt";
 		break;
 	case InquiryType:
-		filename = "allinquiries.txt";
+		filename = "outputs/allinquiries.txt";
 		break;
 	}
 
