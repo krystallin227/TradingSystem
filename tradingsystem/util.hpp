@@ -7,6 +7,7 @@
 #include <map>
 #include <cmath> // For round function
 #include <iomanip>
+#include <chrono>
 
 
 //function to convert decimal to fractional representation - by chatgpt
@@ -52,6 +53,27 @@ double fractional_to_decimal(const std::string& fractional)
     float decimalFraction = fraction32 / 32.0f + fraction256 / 256.0f;
 
     return std::stof(wholePart) + decimalFraction;
+}
+
+//convert a time to string, including millisecond precision. Implemented by chatgpt.
+std::string timeToString(std::chrono::time_point<std::chrono::system_clock> now) 
+{
+    // Convert it to a time_t object
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+
+    // Create a tm struct to hold the local time
+    struct tm parts;
+    localtime_s(&parts, &now_c);
+
+    // Get the number of milliseconds
+    auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
+
+    // Use a stringstream to format the timestamp with milliseconds
+    std::stringstream timestamp;
+    timestamp << std::put_time(&parts, "%Y-%m-%d %H:%M:%S");
+    timestamp << '.' << std::setfill('0') << std::setw(3) << milliseconds.count();
+
+    return timestamp.str();
 }
 
 #endif // !UTIL_HPP
